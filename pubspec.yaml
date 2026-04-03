@@ -32,11 +32,11 @@ flutter:
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
-  fonts:
-    - family: Siemreap
-      fonts:
+  # fonts:
+  #   - family: Siemreap
+  #     fonts:
         # - asset: fonts/GoogleSans-Regular.ttf
-        - asset: fonts/Siemreap-Regular.ttf
+        # - asset: fonts/Siemreap-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
