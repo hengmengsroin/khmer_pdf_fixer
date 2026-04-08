@@ -35,7 +35,7 @@ prefer `KhmerTextRaster`.
 
 ```yaml
 dependencies:
-  khmer_pdf_fixer: ^0.1.0
+  khmer_pdf_fixer: ^0.1.1
 ```
 
 Then run:

@@ -1,3 +1,8 @@
+## 0.1.1
+
+* Improved Khmer text-fixing performance for PDF text helpers.
+* Added publish metadata fields (`repository`, `homepage`, and `issue_tracker`) in `pubspec.yaml`.
+
 ## 0.1.0
 
 * Added Khmer PDF helpers with bundled Siemreap font support.
