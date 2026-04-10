@@ -1,6 +1,6 @@
 name: khmer_pdf_fixer
 description: "Flutter helpers for rendering Khmer text in generated PDFs with bundled Siemreap font support."
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/hengmengsroin/khmer_pdf_fixer
 homepage: https://github.com/hengmengsroin/khmer_pdf_fixer
 issue_tracker: https://github.com/hengmengsroin/khmer_pdf_fixer/issues

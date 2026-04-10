@@ -17,11 +17,10 @@ This package gives you two approaches:
 
 - `KhmerText`, `KhmerParagraph`, `KhmerHeader`, `KhmerRichText`, `KhmerBulletList`,
   and `KhmerTable` for lightweight helper usage
-- `KhmerTextRaster` for stronger rendering fidelity by shaping Khmer with Flutter
+- `KhmerTextRaster` as an optional fallback by shaping Khmer with Flutter
   first, then embedding the result as an image in the PDF
 
-If your document contains important Khmer body copy, headings, or tables,
-prefer `KhmerTextRaster`.
+For most documents, prefer the simple text helpers so PDF text stays crisp and selectable.
 
 ## Features
 
@@ -29,7 +28,7 @@ prefer `KhmerTextRaster`.
 - `KhmerFontManager` for loading the bundled font into `pdf`
 - `.fix` string extension for Khmer visual reordering
 - Khmer PDF widgets for common document structures
-- Raster Khmer renderer for better visual output in generated PDFs
+- Optional raster Khmer renderer fallback
 
 ## Installation
 
@@ -83,7 +82,7 @@ pdf.addPage(
 
 ### Raster fallback usage
 
-Use this when Khmer shaping quality matters more than selectable PDF text:
+Use this only when you need a fallback for shaping edge cases:
 
 ```dart
 import 'package:khmer_pdf_fixer/khmer_pdf_fixer.dart';
@@ -118,13 +117,13 @@ pdf.addPage(
 ## Current limitation
 
 The plain PDF text helpers still rely on heuristics because the underlying
-`pdf` package does not support full Khmer shaping. For the most reliable Khmer
-output, use `KhmerTextRaster`.
+`pdf` package does not support full Khmer shaping. If you still see shaping
+issues in specific content, use `KhmerTextRaster` as a fallback for those parts.
 
 ## Example app
 
 The example app in [`example/`](./example) generates a sample invoice PDF and
-demonstrates the raster fallback path for Khmer rendering.
+demonstrates simple Khmer text rendering.
 
 ## License
 

@@ -1,3 +1,8 @@
+## 0.1.2
+
+* Updated example PDF generation to use simple Khmer text widgets instead of raster text rendering.
+* Updated README guidance to recommend simple text rendering by default and use raster rendering only as a fallback.
+
 ## 0.1.1
 
 * Improved Khmer text-fixing performance for PDF text helpers.

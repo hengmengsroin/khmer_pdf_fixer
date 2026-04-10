@@ -33,69 +33,51 @@ class DemoPage extends StatefulWidget {
 class _DemoPageState extends State<DemoPage> {
   bool _isGenerating = false;
 
-  Future<List<pw.Widget>> _buildRasterContent() async {
-    const pageContentWidth = 515.0;
+  List<pw.Widget> _buildTextContent() {
     const tableWidth = 480.0;
     const col1 = 80.0;
     const col2 = 170.0;
     const col3 = 80.0;
     const col4 = 100.0;
 
-    final header = await KhmerTextRaster.create(
+    final header = KhmerHeader(
       'វិក្កយបត្រ (Invoice)',
       fontSize: 28,
-      fontWeight: pw.FontWeight.bold,
       color: PdfColors.blue800,
+      textAlign: pw.TextAlign.center,
     );
 
-    final paragraph = await KhmerTextRaster.create(
+    final paragraph = KhmerParagraph(
       'សូមស្វាគមន៍មកកាន់ប្រព័ន្ធរបស់យើង។ នេះគឺជាឧទាហរណ៍នៃការប្រើប្រាស់ Khmer PDF Fixer ដើម្បីបង្ហាញអក្សរខ្មែរឲ្យបានត្រឹមត្រូវ។',
       fontSize: 14,
-      maxWidth: pageContentWidth,
       textAlign: pw.TextAlign.justify,
     );
 
-    final richTextLine = pw.Wrap(
-      spacing: 0,
-      runSpacing: 0,
-      children: [
-        await KhmerTextRaster.create('នេះគឺជា ', fontSize: 14),
-        await KhmerTextRaster.create(
-          'អត្ថបទដិត',
+    final richTextLine = KhmerRichText(
+      spans: [
+        KhmerTextSpan(text: 'នេះគឺជា ', fontSize: 14),
+        KhmerTextSpan(
+          text: 'អត្ថបទដិត',
           fontSize: 14,
           fontWeight: pw.FontWeight.bold,
           color: PdfColors.red,
         ),
-        await KhmerTextRaster.create(' និងអត្ថបទធម្មតា។', fontSize: 14),
+        KhmerTextSpan(text: ' និងអត្ថបទធម្មតា។', fontSize: 14),
       ],
     );
 
-    final featureHeader = await KhmerTextRaster.create(
-      'លក្ខណៈពិសេស៖',
-      fontSize: 18,
-      fontWeight: pw.FontWeight.bold,
-    );
+    final featureHeader = KhmerHeader('លក្ខណៈពិសេស៖', fontSize: 18);
 
-    final bullets = <pw.Widget>[
-      await KhmerTextRaster.bulletItem(
+    final bullets = KhmerBulletList(
+      items: const [
         'បង្ហាញពុម្ពអក្សរខ្មែរបានត្រឹមត្រូវ',
-        maxWidth: pageContentWidth - 20,
-      ),
-      await KhmerTextRaster.bulletItem(
         'គាំទ្រតារាង និងបញ្ជី',
-        maxWidth: pageContentWidth - 20,
-      ),
-      await KhmerTextRaster.bulletItem(
         'ងាយស្រួលប្រើប្រាស់ជាមួយ pdf package',
-        maxWidth: pageContentWidth - 20,
-      ),
-    ];
-
-    final tableHeader = await KhmerTextRaster.create(
-      'តារាងទិន្នន័យ៖',
-      fontSize: 18,
-      fontWeight: pw.FontWeight.bold,
+      ],
+      fontSize: 14,
     );
+
+    final tableHeader = KhmerHeader('តារាងទិន្នន័យ៖', fontSize: 18);
 
     final tableRows = <List<String>>[
       ['លេខរៀង', 'ឈ្មោះមុខទំនិញ', 'បរិមាណ', 'តម្លៃសរុប'],
@@ -121,42 +103,46 @@ class _DemoPageState extends State<DemoPage> {
             children: [
               pw.Padding(
                 padding: const pw.EdgeInsets.all(8),
-                child: await KhmerTextRaster.tableCell(
+                child: KhmerText(
                   tableRows[rowIndex][0],
-                  maxWidth: col1 - 16,
                   fontSize: 12,
-                  fontWeight:
-                      rowIndex == 0 ? pw.FontWeight.bold : pw.FontWeight.normal,
+                  fontWeight: rowIndex == 0
+                      ? pw.FontWeight.bold
+                      : pw.FontWeight.normal,
+                  textAlign: pw.TextAlign.center,
                 ),
               ),
               pw.Padding(
                 padding: const pw.EdgeInsets.all(8),
-                child: await KhmerTextRaster.tableCell(
+                child: KhmerText(
                   tableRows[rowIndex][1],
-                  maxWidth: col2 - 16,
                   fontSize: 12,
-                  fontWeight:
-                      rowIndex == 0 ? pw.FontWeight.bold : pw.FontWeight.normal,
+                  fontWeight: rowIndex == 0
+                      ? pw.FontWeight.bold
+                      : pw.FontWeight.normal,
+                  textAlign: pw.TextAlign.center,
                 ),
               ),
               pw.Padding(
                 padding: const pw.EdgeInsets.all(8),
-                child: await KhmerTextRaster.tableCell(
+                child: KhmerText(
                   tableRows[rowIndex][2],
-                  maxWidth: col3 - 16,
                   fontSize: 12,
-                  fontWeight:
-                      rowIndex == 0 ? pw.FontWeight.bold : pw.FontWeight.normal,
+                  fontWeight: rowIndex == 0
+                      ? pw.FontWeight.bold
+                      : pw.FontWeight.normal,
+                  textAlign: pw.TextAlign.center,
                 ),
               ),
               pw.Padding(
                 padding: const pw.EdgeInsets.all(8),
-                child: await KhmerTextRaster.tableCell(
+                child: KhmerText(
                   tableRows[rowIndex][3],
-                  maxWidth: col4 - 16,
                   fontSize: 12,
-                  fontWeight:
-                      rowIndex == 0 ? pw.FontWeight.bold : pw.FontWeight.normal,
+                  fontWeight: rowIndex == 0
+                      ? pw.FontWeight.bold
+                      : pw.FontWeight.normal,
+                  textAlign: pw.TextAlign.center,
                 ),
               ),
             ],
@@ -164,30 +150,29 @@ class _DemoPageState extends State<DemoPage> {
       ],
     );
 
-    final thankYou = await KhmerTextRaster.create(
+    final thankYou = KhmerText(
       'សូមអរគុណ!',
       fontSize: 20,
       fontWeight: pw.FontWeight.bold,
       color: PdfColors.green700,
+      textAlign: pw.TextAlign.center,
     );
 
     return [
-      pw.Center(child: header),
-      pw.SizedBox(height: 20),
+      header,
+      pw.SizedBox(height: 12),
       paragraph,
       pw.SizedBox(height: 20),
       richTextLine,
       pw.SizedBox(height: 20),
       featureHeader,
-      pw.SizedBox(height: 10),
-      ...bullets
-          .expand((item) => [item, pw.SizedBox(height: 8)])
-          .toList()
-        ..removeLast(),
+      bullets,
       pw.SizedBox(height: 30),
       tableHeader,
       pw.SizedBox(height: 10),
-      pw.Center(child: pw.SizedBox(width: tableWidth, child: table)),
+      pw.Center(
+        child: pw.SizedBox(width: tableWidth, child: table),
+      ),
       pw.SizedBox(height: 30),
       pw.Center(child: thankYou),
     ];
@@ -201,14 +186,11 @@ class _DemoPageState extends State<DemoPage> {
 
       // 2. Create a PDF document
       final pdf = pw.Document();
-      final content = await _buildRasterContent();
+      final content = _buildTextContent();
 
       // 3. Add a page
       pdf.addPage(
-        pw.MultiPage(
-          pageFormat: PdfPageFormat.a4,
-          build: (context) => content,
-        ),
+        pw.MultiPage(pageFormat: PdfPageFormat.a4, build: (context) => content),
       );
 
       // Save and open
